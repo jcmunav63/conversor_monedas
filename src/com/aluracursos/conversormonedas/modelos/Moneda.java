@@ -1,5 +1,5 @@
 package com.aluracursos.conversormonedas.modelos;
 
-public record Moneda(String monedaBase, String monedaObjetivo, double tasaCambio,
-                     double montoConvertido) {
+public record Moneda(String base_code, String target_code, double conversion_rate,
+                     double conversion_result) {
 }
