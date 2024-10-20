@@ -1,6 +1,7 @@
 package com.aluracursos.conversormonedas.principal;
 
 import com.aluracursos.conversormonedas.modelos.ConsultaApiMonedas;
+import com.aluracursos.conversormonedas.modelos.GeneracionArchivo;
 import com.aluracursos.conversormonedas.modelos.Moneda;
 import com.aluracursos.conversormonedas.modelos.listaMonedas;
 import com.google.gson.Gson;
@@ -15,14 +16,10 @@ public class Principal {
     public static void main(String[] args) {
         Scanner lectura = new Scanner(System.in);
         ConsultaApiMonedas consulta = new ConsultaApiMonedas();
-
-//        List<String> historialDeBusquedas = new ArrayList<>();
-
         Map<String, String> listaDeMonedas = new TreeMap<>(listaMonedas.obtenerLista());
-
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
-                .create(); // setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .create();
         boolean bandera = true;
 
         while (bandera) {
@@ -75,19 +72,24 @@ public class Principal {
 
             try {
                 Moneda consultaMonedas = consulta.buscarMonedas(monedaBase, monedaObjetivo, montoAConvertir);
-                System.out.println("Conversion de monedas " + monedaBase + " a " + monedaObjetivo +
+                System.out.println("  Conversion de monedas " + monedaBase + " a " + monedaObjetivo +
                         " , monto "+ montoAConvertir);
-                System.out.println(consultaMonedas);
+                System.out.println("  Resultado: ** " + monedaObjetivo + "= " + consultaMonedas.conversion_result() + " **");
+                System.out.println("  " + consultaMonedas);
 
-//                GeneradorDeArchivos generarArchivo = new GeneradorDeArchivos();
-//                generarArchivos.guardarJson(consultaMonedas, consultaMonedas.conversion_result());
+                GeneracionArchivo generarArchivo = new GeneracionArchivo();
+                generarArchivo.guardarJson(consultaMonedas, montoAConvertir);
+
+                System.out.println("--Muchas gracias por utilizar la aplicación 'Conversor de Monedas'--");
 
                 bandera = false;
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
                 System.out.println("Finalizando la aplicación.");
                 bandera = false;
-            };
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
