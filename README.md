@@ -76,9 +76,10 @@ A continuación se presentan algunos ejemplos de operaciones de conversión entr
   <br/>
 </div>
 
-👥 Authors
-👤 Juan Carlos Muñoz
+## 👥 Authors
 
-GitHub: @jcmunav63
-Twitter: @jcmunav63
-LinkedIn: @juan-carlos-muñoz
+👤 **Juan Carlos Muñoz**
+
+- GitHub: [@jcmunav63](https://github.com/jcmunav63)
+- Twitter: [@jcmunav63](https://twitter.com/jcmunav63)
+- LinkedIn: [@juan-carlos-muñoz](https://www.linkedin.com/in/juan-carlos-mu%C3%B1oz-fullstackdev/)
