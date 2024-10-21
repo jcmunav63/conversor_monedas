@@ -1,0 +1,7 @@
+{
+  "base_code": "USD",
+  "target_code": "EUR",
+  "conversion_rate": 0.9205,
+  "conversion_result": 1104.6,
+  "monto_a_convertir": 1200.0
+}

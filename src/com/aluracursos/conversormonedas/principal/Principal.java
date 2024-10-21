@@ -4,8 +4,8 @@ import com.aluracursos.conversormonedas.modelos.ConsultaApiMonedas;
 import com.aluracursos.conversormonedas.modelos.GeneracionArchivo;
 import com.aluracursos.conversormonedas.modelos.Moneda;
 import com.aluracursos.conversormonedas.modelos.listaMonedas;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Map;
@@ -17,9 +17,9 @@ public class Principal {
         Scanner lectura = new Scanner(System.in);
         ConsultaApiMonedas consulta = new ConsultaApiMonedas();
         Map<String, String> listaDeMonedas = new TreeMap<>(listaMonedas.obtenerLista());
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+//        Gson gson = new GsonBuilder()
+//                .setPrettyPrinting()
+//                .create();
         boolean bandera = true;
 
         while (bandera) {
@@ -80,9 +80,13 @@ public class Principal {
                 GeneracionArchivo generarArchivo = new GeneracionArchivo();
                 generarArchivo.guardarJson(consultaMonedas, montoAConvertir);
 
-                System.out.println("--Muchas gracias por utilizar la aplicación 'Conversor de Monedas'--");
+                System.out.println("¿Desea continuar realizando conversiones de monedas? (responda Si o No)");
+                var entrar = lectura.nextLine().toUpperCase();
 
-                bandera = false;
+                if (!entrar.equals("SI")) {
+                    System.out.println("--Muchas gracias por utilizar la aplicación 'Conversor de Monedas'--");
+                    bandera = false;
+                }
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
                 System.out.println("Finalizando la aplicación.");

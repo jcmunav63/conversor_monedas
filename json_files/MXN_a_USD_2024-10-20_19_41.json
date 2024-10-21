@@ -1,0 +1,7 @@
+{
+  "base_code": "MXN",
+  "target_code": "USD",
+  "conversion_rate": 0.05034,
+  "conversion_result": 503.4,
+  "monto_a_convertir": 10000.0
+}
